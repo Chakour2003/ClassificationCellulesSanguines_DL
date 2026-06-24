@@ -6,6 +6,7 @@ from PIL import Image
 import io
 from pathlib import Path
 from tensorflow.keras.models import load_model
+from tensorflow.keras.applications.resnet50 import preprocess_input
 
 app = FastAPI()
 app.add_middleware(
@@ -44,8 +45,11 @@ async def predict(file: UploadFile = File(...)):
     image_bytes = await file.read()
     img = Image.open(io.BytesIO(image_bytes)).convert("RGB")
     img = img.resize((224, 224))
-    arr = np.array(img, dtype=np.float32) / 255.0
+    arr = np.array(img, dtype=np.float32)
     arr = np.expand_dims(arr, axis=0)
+
+    # IMPORTANT : Il faut nécessairement appeller preprocess_input de resnet50
+    arr = preprocess_input(arr)
 
     predictions = model.predict(arr, verbose=0)[0]
     predicted_index = int(np.argmax(predictions))
