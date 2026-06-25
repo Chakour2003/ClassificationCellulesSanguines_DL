@@ -109,9 +109,9 @@ export default function Home() {
 
       {/* ── Header ── */}
       <header style={S.header}>
-        <span style={S.pill}>Réseau de neurones · ResNet-50</span>
+        <span style={S.pill}>Réseau de neurones · VGG16</span>
         <h1 style={S.title}>
-          Hemo<span style={S.titleAccent}>Scan</span>
+        MedCell<span style={S.titleAccent}>AI</span>
         </h1>
         <p style={S.subtitle}>
           Identifiez le type de globule blanc à partir d'une image microscopique
@@ -218,7 +218,7 @@ export default function Home() {
           {[
             { n: "01", label: "Upload" },
             { n: "02", label: "Resize 224px" },
-            { n: "03", label: "ResNet-50" },
+            { n: "03", label: "VGG16" },
             { n: "04", label: "Prédiction" },
           ].map((s, i) => (
             <div key={i} style={S.stepItem}>
