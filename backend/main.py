@@ -6,7 +6,7 @@ from PIL import Image
 import io
 from pathlib import Path
 from tensorflow.keras.models import load_model
-from tensorflow.keras.applications.resnet50 import preprocess_input
+from tensorflow.keras.applications.vgg16 import preprocess_input as vgg16_preprocess
 
 app = FastAPI()
 app.add_middleware(
@@ -49,7 +49,7 @@ async def predict(file: UploadFile = File(...)):
     arr = np.expand_dims(arr, axis=0)
 
     # IMPORTANT : Il faut nécessairement appeller preprocess_input de resnet50
-    arr = preprocess_input(arr)
+    arr = vgg16_preprocess(arr)
 
     predictions = model.predict(arr, verbose=0)[0]
     predicted_index = int(np.argmax(predictions))

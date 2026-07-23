@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import souhailImg from "../images/souhail.jpg";
-import chakourImg from "../images/mohammed.png";
 import FSBM from "../images/fsbm.png";
 import DEPT from "../images/dept.jpeg";
 import FILIERE from "../images/filiere.png";
@@ -81,7 +79,7 @@ if (!document.getElementById("hemoscan-keyframes")) {
 const LINES = [
   "Analysez vos globules blancs en quelques secondes.",
   "Une image microscopique suffit.",
-  "ResNet-50 identifie Basophiles, Éosinophiles, Lymphocytes, Monocytes et Neutrophiles.",
+  "VGG16identifie  Éosinophiles, Lymphocytes, Monocytes et Neutrophiles.",
   "Médecine augmentée. Diagnostic assisté par l'IA.",
 ];
 
@@ -484,7 +482,7 @@ export default function LandingPage() {
 
       {/* ── Header ── */}
       <header style={S.header}>
-        <div style={S.logo}>Hemo<span style={S.red}>Scan</span></div>
+        <div style={S.logo}>MedCell <span style={S.red}>AI</span></div>
         <nav style={S.nav}>
           <a style={S.navLink} href="#about">À propos</a>
           <a style={S.navLink} href="#how">Pipeline</a>
@@ -507,7 +505,7 @@ export default function LandingPage() {
           </h1>
           <Typewriter />
           <div style={S.heroBadges}>
-            <span style={S.heroBadge}>ResNet-50</span>
+            <span style={S.heroBadge}>VGG16</span>
             <span style={S.heroBadge}>4 classes</span>
             <span style={S.heroBadge}>Licence Excellence IA</span>
           </div>
@@ -556,7 +554,7 @@ export default function LandingPage() {
           {[
             { n:"01", title:"Upload",        desc:"Importez une image microscopique JPEG ou PNG." },
             { n:"02", title:"Prétraitement", desc:"Redimensionnement automatique à 224×224 px." },
-            { n:"03", title:"ResNet-50",     desc:"Le réseau analyse les caractéristiques visuelles cellulaires." },
+            { n:"03", title:"VGG16",     desc:"Le réseau analyse les caractéristiques visuelles cellulaires." },
             { n:"04", title:"Résultat",      desc:"Type de cellule et probabilités affichés instantanément." },
           ].map((s) => (
             <div key={s.n} style={S.stepCard}>
@@ -588,14 +586,14 @@ export default function LandingPage() {
             name="SIF Souhail"
             role="Licence Excellence IA — FSBM"
             desc="Bac+2 en développement des systèmes d'information · BTS Casablanca"
-            imgSrc={souhailImg}
+            imgSrc={null}
             badge="21 ans"
           />
           <PersonCard
             name="CHAKOUR Mohammed"
             role="Licence Excellence IA — FSBM"
             desc="Bac+2 en génie informatique spécialité génie logiciel · EST Meknès"
-            imgSrc={chakourImg}
+            imgSrc={null}
             badge="21 ans"
           />
         </div>
@@ -634,7 +632,7 @@ export default function LandingPage() {
       {/* ── Footer ── */}
       <footer style={S.footer}>
         <div style={S.footerTop}>
-          <span style={S.footerLogo}>Hemo<span style={S.red}>Scan</span></span>
+          <span style={S.footerLogo}>MedCell<span style={S.red}>AI</span></span>
           <p style={S.footerSub}>
             Faculté des Sciences Ben M'Sik · Université Hassan II · Casablanca
           </p>
@@ -642,7 +640,7 @@ export default function LandingPage() {
         <p style={S.footerText}>
           Projet de fin de module Deep Learning · Licence d'Excellence en Intelligence Artificielle
         </p>
-        <p style={S.footerCopy}>© {new Date().getFullYear()} HemoScan. Tous droits réservés.</p>
+        <p style={S.footerCopy}>© {new Date().getFullYear()} MedCell AI. Tous droits réservés.</p>
       </footer>
     </div>
   );
