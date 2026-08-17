@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FSBM from "../images/fsbm.png";
 import DEPT from "../images/dept.jpeg";
@@ -268,8 +268,6 @@ function HeroFloatingCells() {
           key={i}
           style={{
             position: "absolute",
-            animation: `${cell.animName} ${cell.duration} ease-in-out infinite`,
-            animationDelay: `${i * -3}s`,
             borderRadius: "50%",
             animation: `${cell.animName} ${cell.duration} ease-in-out infinite, ${cell.glowAnim} ${parseFloat(cell.duration)*0.7}s ease-in-out infinite`,
             animationDelay: `${i * -3.5}s, ${i * -2}s`,
