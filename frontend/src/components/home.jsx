@@ -234,46 +234,60 @@ export default function Home() {
   );
 }
 
-const S = {
+
+ const S = {
   page: {
     minHeight: "100vh",
+    width: "100%",
     background: "#FFFFFF",
     fontFamily: "'Inter', system-ui, sans-serif",
     color: "#1E293B",
+    overflowX: "hidden", // Empêche le défilement horizontal
   },
   header: {
     textAlign: "center",
-    padding: "60px 24px 44px",
+    padding: "36px 16px 28px", // Padding réduit pour mobile
     borderBottom: "1px solid rgba(239,68,68,0.12)",
   },
   pill: {
     display: "inline-block",
-    fontSize: 11, fontWeight: 500, letterSpacing: 1.4,
+    fontSize: 10, fontWeight: 500, letterSpacing: 1.2,
     textTransform: "uppercase", color: "#EF4444",
     border: "1px solid rgba(239,68,68,0.25)",
-    borderRadius: 99, padding: "4px 14px", marginBottom: 20,
+    borderRadius: 99, padding: "4px 12px", marginBottom: 14,
   },
   title: {
-    margin: "0 0 12px", fontSize: 48, fontWeight: 800,
-    letterSpacing: "-2px", color: "#0F172A",
+    margin: "0 0 10px", 
+    fontSize: "clamp(28px, 8vw, 48px)", // Taille de texte fluide selon la largeur de l'écran
+    fontWeight: 800,
+    letterSpacing: "-1px", color: "#0F172A",
   },
   titleAccent: { color: "#EF4444" },
   subtitle: {
-    margin: 0, fontSize: 15, color: "#475569",
-    maxWidth: 420, marginInline: "auto", lineHeight: 1.65,
+    margin: 0, fontSize: 14, color: "#475569",
+    maxWidth: 420, marginInline: "auto", lineHeight: 1.5,
+    padding: "0 8px",
   },
 
-  main: { maxWidth: 560, margin: "0 auto", padding: "40px 20px 80px" },
+  main: { 
+    maxWidth: 560, 
+    width: "100%",
+    margin: "0 auto", 
+    padding: "20px 16px 60px", // Marges ajustées pour mobile
+    boxSizing: "border-box",
+  },
 
   card: {
     background: "#FFFFFF",
     border: "1px solid rgba(239,68,68,0.08)",
-    borderRadius: 18, padding: 24,
+    borderRadius: 18, 
+    padding: "16px", // Atténué pour libérer de l'espace sur petit écran
+    boxSizing: "border-box",
   },
 
   dropzone: {
     border: "1.5px dashed rgba(239,68,68,0.15)",
-    borderRadius: 12, padding: "40px 20px",
+    borderRadius: 12, padding: "30px 12px",
     textAlign: "center", cursor: "pointer",
     transition: "all 0.2s",
   },
@@ -282,19 +296,19 @@ const S = {
     background: "rgba(239,68,68,0.04)",
   },
   dropIconWrap: {
-    width: 52, height: 52, borderRadius: "50%",
+    width: 48, height: 48, borderRadius: "50%",
     background: "rgba(239,68,68,0.07)",
     border: "1px solid rgba(239,68,68,0.15)",
     display: "flex", alignItems: "center", justifyContent: "center",
-    color: "#EF4444", margin: "0 auto 16px",
+    color: "#EF4444", margin: "0 auto 12px",
     transition: "all 0.2s",
   },
   dropIconWrapHover: {
     background: "rgba(239,68,68,0.14)",
     border: "1px solid rgba(239,68,68,0.35)",
   },
-  dropTitle: { margin: "0 0 6px", fontSize: 15, fontWeight: 600, color: "#1E293B" },
-  dropSub:   { margin: "0 0 8px", fontSize: 13, color: "#475569" },
+  dropTitle: { margin: "0 0 4px", fontSize: 14, fontWeight: 600, color: "#1E293B" },
+  dropSub:   { margin: "0 0 6px", fontSize: 12, color: "#475569" },
   dropCta:   { color: "#EF4444", cursor: "pointer", textDecoration: "underline" },
   dropHint:  { margin: 0, fontSize: 11, color: "#1E293B", letterSpacing: 0.5 },
 
@@ -302,18 +316,18 @@ const S = {
     borderRadius: 10, overflow: "hidden",
     border: "1px solid rgba(239,68,68,0.1)",
   },
-  previewImg: { width: "100%", maxHeight: 260, objectFit: "cover", display: "block" },
+  previewImg: { width: "100%", maxHeight: 240, objectFit: "cover", display: "block" },
   previewFooter: {
     display: "flex", alignItems: "center", justifyContent: "space-between",
     padding: "8px 12px",
     background: "rgba(239,68,68,0.03)",
   },
-  previewName: { fontSize: 12, color: "#475569" },
+  previewName: { fontSize: 12, color: "#475569", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" },
   deleteBtn: {
     fontSize: 11, color: "#EF4444",
     background: "rgba(239,68,68,0.1)",
     border: "1px solid rgba(239,68,68,0.2)",
-    borderRadius: 6, padding: "3px 8px", cursor: "pointer",
+    borderRadius: 6, padding: "3px 8px", cursor: "pointer", flexShrink: 0,
   },
 
   errorBox: {
@@ -321,7 +335,7 @@ const S = {
     background: "rgba(239,68,68,0.07)",
     border: "1px solid rgba(239,68,68,0.18)",
     borderRadius: 8, padding: "10px 14px", marginTop: 14,
-    fontSize: 13, color: "#FCA5A5",
+    fontSize: 13, color: "#DC2626",
   },
 
   btn: {
@@ -340,11 +354,11 @@ const S = {
     animation: "spin 0.7s linear infinite",
   },
 
-  result: { marginTop: 20 },
+  result: { marginTop: 16 },
   resultCard: {
     borderRadius: 12, border: "1px solid",
-    padding: "16px 18px", position: "relative", overflow: "hidden",
-    display: "flex", alignItems: "center", gap: 14,
+    padding: "12px 14px", position: "relative", overflow: "hidden",
+    display: "flex", alignItems: "center", gap: 10,
   },
   resultGlow: {
     position: "absolute", top: -20, left: -20,
@@ -352,13 +366,13 @@ const S = {
     filter: "blur(30px)", opacity: 0.25,
   },
   resultSup: {
-    margin: "0 0 3px", fontSize: 10, fontWeight: 600,
-    letterSpacing: 1.3, textTransform: "uppercase", color: "#475569",
+    margin: "0 0 2px", fontSize: 10, fontWeight: 600,
+    letterSpacing: 1.1, textTransform: "uppercase", color: "#475569",
   },
-  resultName: { margin: 0, fontSize: 20, fontWeight: 700 },
-  resultRight: { marginLeft: "auto", textAlign: "right" },
-  resultPct: { margin: 0, fontSize: 28, fontWeight: 800, lineHeight: 1 },
-  resultPctSup: { margin: "3px 0 0", fontSize: 10, color: "#475569" },
+  resultName: { margin: 0, fontSize: "clamp(16px, 5vw, 20px)", fontWeight: 700 },
+  resultRight: { marginLeft: "auto", textAlign: "right", flexShrink: 0 },
+  resultPct: { margin: 0, fontSize: "clamp(22px, 6vw, 28px)", fontWeight: 800, lineHeight: 1 },
+  resultPctSup: { margin: "2px 0 0", fontSize: 9, color: "#475569" },
 
   bar: {
     height: 4, borderRadius: 99, marginTop: 10,
@@ -370,40 +384,40 @@ const S = {
   },
 
   sectionLabel: {
-    margin: "20px 0 8px", fontSize: 10, fontWeight: 600,
-    letterSpacing: 1.3, textTransform: "uppercase", color: "#334155",
+    margin: "16px 0 8px", fontSize: 10, fontWeight: 600,
+    letterSpacing: 1.1, textTransform: "uppercase", color: "#334155",
   },
   top3Row: {
-    display: "flex", alignItems: "center", gap: 10,
-    padding: "7px 0",
+    display: "flex", alignItems: "center", gap: 8,
+    padding: "6px 0",
     borderBottom: "1px solid rgba(239,68,68,0.06)",
   },
-  top3Rank: { fontSize: 12, fontWeight: 700, width: 14, flexShrink: 0 },
-  top3Name: { fontSize: 13, color: "#475569", width: 106, flexShrink: 0 },
+  top3Rank: { fontSize: 11, fontWeight: 700, width: 12, flexShrink: 0 },
+  top3Name: { fontSize: 12, color: "#475569", width: 85, flexShrink: 0 },
   top3Track: {
     flex: 1, height: 3, borderRadius: 99,
     background: "rgba(239,68,68,0.08)", overflow: "hidden",
   },
   top3Fill: { height: "100%", borderRadius: 99, transition: "width 0.5s ease" },
   top3Pct: {
-    fontSize: 12, fontWeight: 500, width: 40,
-    textAlign: "right", fontVariantNumeric: "tabular-nums",
+    fontSize: 11, fontWeight: 500, width: 35,
+    textAlign: "right", fontVariantNumeric: "tabular-nums", flexShrink: 0,
   },
 
   resetBtn: {
-    width: "100%", marginTop: 18, padding: "10px 0",
+    width: "100%", marginTop: 16, padding: "10px 0",
     background: "transparent",
-    border: "1px solid rgba(239,68,68,0.1)",
+    border: "1px solid rgba(239,68,68,0.15)",
     borderRadius: 10, color: "#475569",
     fontSize: 13, cursor: "pointer",
   },
 
   steps: {
     display: "flex", alignItems: "center", justifyContent: "center",
-    gap: 8, marginTop: 22, flexWrap: "wrap",
+    gap: "6px 12px", marginTop: 20, flexWrap: "wrap",
   },
-  stepItem: { display: "flex", alignItems: "center", gap: 8 },
-  stepN: { fontSize: 10, fontWeight: 700, color: "#450A0A", letterSpacing: 1 },
+  stepItem: { display: "flex", alignItems: "center", gap: 6 },
+  stepN: { fontSize: 10, fontWeight: 700, color: "#450A0A", letterSpacing: 0.8 },
   stepLabel: { fontSize: 11, color: "#1E293B" },
-  stepSep: { color: "#1A0000", fontSize: 14 },
+  stepSep: { color: "#1A0000", fontSize: 12 },
 };

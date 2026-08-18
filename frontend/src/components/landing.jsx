@@ -644,59 +644,84 @@ export default function LandingPage() {
   );
 }
 
-/* ── Styles ── */
+/* ── Styles Optimisés & Responsive ── */
 const S = {
   page: {
     minHeight: "100vh",
+    width: "100%",
     background: "#ffffff",
     fontFamily: "'Inter', system-ui, sans-serif",
     color: "#0f172a",
+    overflowX: "hidden", // Empêche tout défilement horizontal indésirable
   },
   red: { color: "#dc2626" },
 
   header: {
-    display: "flex", alignItems: "center", justifyContent: "space-between",
-    padding: "0 48px", height: 68,
+    display: "flex", 
+    alignItems: "center", 
+    justify: "space-between",
+    padding: "0 clamp(16px, 4vw, 48px)", 
+    minHeight: 68,
     borderBottom: "1px solid rgba(220,38,38,0.1)",
-    position: "sticky", top: 0,
+    position: "sticky", 
+    top: 0,
     background: "rgba(255,255,255,0.94)",
-    backdropFilter: "blur(12px)", zIndex: 100,
+    backdropFilter: "blur(12px)", 
+    zIndex: 100,
+    boxSizing: "border-box",
   },
-  logo: { fontSize: 22, fontWeight: 800, letterSpacing: "-0.5px", color: "#0f172a" },
-  nav: { display: "flex", alignItems: "center", gap: 22 },
+  logo: { fontSize: "clamp(18px, 4vw, 22px)", fontWeight: 800, letterSpacing: "-0.5px", color: "#0f172a" },
+  nav: { display: "flex", alignItems: "center", gap: "clamp(10px, 2vw, 22px)" },
   navLink: { fontSize: 13, color: "#475569", textDecoration: "none", fontWeight: 500 },
   navBtn: {
     fontSize: 13, fontWeight: 600, color: "#fff", background: "#dc2626",
-    border: "none", borderRadius: 8, padding: "9px 18px", cursor: "pointer",
+    border: "none", borderRadius: 8, padding: "8px 16px", cursor: "pointer",
   },
 
   hero: {
-    display: "flex", alignItems: "center", justifyContent: "space-between",
-    maxWidth: 1200, margin: "0 auto", padding: "70px 40px 60px", gap: 40,
+    display: "flex", 
+    alignItems: "center", 
+    justifyContent: "space-between",
+    maxWidth: 1200, 
+    margin: "0 auto", 
+    padding: "clamp(32px, 6vw, 70px) clamp(16px, 4vw, 40px)", 
+    gap: 40,
+    flexWrap: "wrap", // S'empile automatiquement sur mobile
   },
-  heroLeft: { flex: 1, maxWidth: 520 },
+  heroLeft: { flex: "1 1 300px", maxWidth: 520 },
   heroRight: {
-    flex: 1, display: "flex", flexDirection: "column", alignItems: "center",
+    flex: "1 1 300px", 
+    display: "flex", 
+    flexDirection: "column", 
+    alignItems: "center",
+    width: "100%",
   },
 
-  /* floating 3D hero area */
+  /* Container 3D adaptatif */
   heroFloatContainer: {
     position: "relative",
-    width: 420,
-    height: 340,
-    padding:50,
+    width: "100%",
+    maxWidth: 420,
+    height: "auto",
+    minHeight: 280,
+    padding: "clamp(20px, 5vw, 50px)",
     background: "transparent",
     borderRadius: 24,
     overflow: "hidden",
+    boxSizing: "border-box",
   },
 
   eyebrow: {
     display: "inline-block", fontSize: 11, fontWeight: 600,
-    letterSpacing: 1.6, textTransform: "uppercase", color: "#dc2626", marginBottom: 18,
+    letterSpacing: 1.6, textTransform: "uppercase", color: "#dc2626", marginBottom: 14,
   },
   headline: {
-    fontSize: 42, fontWeight: 800, lineHeight: 1.18,
-    letterSpacing: "-1.5px", margin: "0 0 22px", color: "#0f172a",
+    fontSize: "clamp(28px, 6vw, 42px)", // S'adapte à la taille de l'écran
+    fontWeight: 800, 
+    lineHeight: 1.18,
+    letterSpacing: "-1.5px", 
+    margin: "0 0 22px", 
+    color: "#0f172a",
   },
   typewriter: {
     fontSize: 15, lineHeight: 1.7, color: "#475569",
@@ -719,21 +744,22 @@ const S = {
   },
   cellLabel: { fontSize: 11, color: "#94a3b8", marginTop: 12, letterSpacing: 0.5, textAlign: "center" },
 
-  /* ── Section Cells (centered row) ── */
+  /* ── Section Cells ── */
   cellsSection: {
-    padding: "80px 40px 100px", textAlign: "center",
+    padding: "clamp(40px, 8vw, 80px) clamp(16px, 4vw, 40px)", 
+    textAlign: "center",
     background: "#fafafa",
     borderTop: "1px solid rgba(220,38,38,0.07)",
   },
   cellsSub: {
     fontSize: 14, color: "#64748b", maxWidth: 560,
-    margin: "-28px auto 44px", lineHeight: 1.7,
+    margin: "-20px auto 44px", lineHeight: 1.7,
   },
   sectionCellsRow: {
     display: "flex",
     gap: 22,
-    justifyContent: "center",
-    alignItems: "flex-start",
+    justify: "center",
+    alignItems: "stretch",
     flexWrap: "wrap",
     maxWidth: 1100,
     margin: "0 auto",
@@ -745,8 +771,9 @@ const S = {
     textAlign: "center",
     cursor: "default",
     transition: "transform 0.22s, box-shadow 0.22s, border-color 0.22s",
-    width: 230,
-    flexShrink: 0,
+    width: "100%",
+    maxWidth: 240, // Évite qu'elle soit trop large mais s'adapte aux conteneurs réduits
+    boxSizing: "border-box",
   },
   sectionCellSvgWrap: {
     display: "flex", justifyContent: "center",
@@ -768,16 +795,13 @@ const S = {
     background: "#fff",
     borderTop: "1px solid rgba(220,38,38,0.07)",
     borderBottom: "1px solid rgba(220,38,38,0.07)",
-    padding: "60px 40px",
+    padding: "clamp(40px, 6vw, 60px) clamp(16px, 4vw, 40px)",
   },
   logosRow: {
     display: "flex", alignItems: "center", justifyContent: "center",
-    gap: 0, maxWidth: 900, margin: "0 auto 56px", flexWrap: "wrap",
+    gap: 20, maxWidth: 900, margin: "0 auto 40px", flexWrap: "wrap",
   },
-  logosDivider: {
-    width: 1, height: 70, background: "rgba(220,38,38,0.12)", margin: "0 32px",
-  },
-  logoBox: { textAlign: "center", minWidth: 160 },
+  logoBox: { textAlign: "center", minWidth: 140 },
   logoBoxImg: { width: 72, height: 72, objectFit: "contain", marginBottom: 8 },
   logoBoxLabel: { fontSize: 12, fontWeight: 600, color: "#0f172a", margin: "0 0 2px", lineHeight: 1.4 },
   logoBoxSub: { fontSize: 11, color: "#dc2626", fontWeight: 500, margin: 0 },
@@ -785,14 +809,19 @@ const S = {
   aboutText: { flex: 1 },
   aboutDesc: { fontSize: 15, color: "#475569", lineHeight: 1.75, margin: "0 0 14px" },
 
-  section: { padding: "80px 40px", textAlign: "center", background: "#fff" },
+  section: { 
+    padding: "clamp(40px, 8vw, 80px) clamp(16px, 4vw, 40px)", 
+    textAlign: "center", 
+    background: "#fff" 
+  },
   sectionEyebrow: {
     fontSize: 11, fontWeight: 700, letterSpacing: 1.8,
     textTransform: "uppercase", color: "#dc2626", margin: "0 0 10px",
   },
   sectionTitle: {
-    fontSize: 32, fontWeight: 800, letterSpacing: "-1px",
-    color: "#0f172a", margin: "0 0 48px",
+    fontSize: "clamp(24px, 5vw, 32px)", 
+    fontWeight: 800, letterSpacing: "-1px",
+    color: "#0f172a", margin: "0 0 40px",
   },
   steps: {
     display: "flex", gap: 20, justifyContent: "center",
@@ -800,7 +829,9 @@ const S = {
   },
   stepCard: {
     background: "#fafafa", border: "1px solid rgba(220,38,38,0.1)",
-    borderRadius: 14, padding: "28px 24px", width: 210, textAlign: "left",
+    borderRadius: 14, padding: "28px 24px", 
+    width: "100%", maxWidth: 220, 
+    textAlign: "left", boxSizing: "border-box",
   },
   stepN: { display: "block", fontSize: 11, fontWeight: 800, letterSpacing: 1.5, color: "#dc2626", marginBottom: 12 },
   stepTitle: { fontSize: 16, fontWeight: 700, color: "#0f172a", margin: "0 0 8px" },
@@ -809,16 +840,19 @@ const S = {
   teamSection: {
     background: "#fafafa",
     borderTop: "1px solid rgba(220,38,38,0.07)",
-    padding: "80px 40px", textAlign: "center",
+    padding: "clamp(40px, 8vw, 80px) clamp(16px, 4vw, 40px)", 
+    textAlign: "center",
   },
   teamGrid: {
-    display: "flex", gap: 28, justifyContent: "center",
+    display: "flex", gap: 24, justifyContent: "center",
     flexWrap: "wrap", maxWidth: 800, margin: "0 auto",
   },
 
   personCard: {
     background: "#fff", border: "1px solid rgba(220,38,38,0.1)",
-    borderRadius: 16, padding: "28px 24px", width: 240, textAlign: "center",
+    borderRadius: 16, padding: "28px 24px", 
+    width: "100%", maxWidth: 240, 
+    textAlign: "center", boxSizing: "border-box",
   },
   personImgWrap: { position: "relative", display: "inline-block", marginBottom: 16 },
   personImg: { width: 90, height: 90, borderRadius: "50%", objectFit: "cover", display: "block" },
@@ -836,15 +870,21 @@ const S = {
   personRole: { fontSize: 12, color: "#dc2626", fontWeight: 500, margin: "0 0 10px" },
   personDesc: { fontSize: 13, color: "#64748b", lineHeight: 1.6, margin: 0 },
 
-  band: { background: "#dc2626", padding: "70px 40px", textAlign: "center" },
-  bandTitle: { fontSize: 30, fontWeight: 800, color: "#fff", margin: "0 0 28px", letterSpacing: "-0.5px" },
+  band: { 
+    background: "#dc2626", 
+    padding: "clamp(40px, 6vw, 70px) clamp(16px, 4vw, 40px)", 
+    textAlign: "center" 
+  },
+  bandTitle: { fontSize: "clamp(22px, 5vw, 30px)", fontWeight: 800, color: "#fff", margin: "0 0 28px", letterSpacing: "-0.5px" },
   bandBtn: {
     fontSize: 15, fontWeight: 700, color: "#dc2626", background: "#fff",
     border: "none", borderRadius: 10, padding: "14px 36px", cursor: "pointer",
   },
 
   footer: {
-    padding: "48px 60px", borderTop: "1px solid rgba(220,38,38,0.08)", textAlign: "center",
+    padding: "40px clamp(16px, 4vw, 60px)", 
+    borderTop: "1px solid rgba(220,38,38,0.08)", 
+    textAlign: "center",
   },
   footerTop: { marginBottom: 12 },
   footerLogo: { fontSize: 20, fontWeight: 800, color: "#0f172a" },
