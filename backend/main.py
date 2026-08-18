@@ -7,6 +7,7 @@ from PIL import Image
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Masque INFO (1) et WARNING (2)
 from tensorflow.keras.models import load_model
 from tensorflow.keras.applications.vgg16 import preprocess_input as vgg16_preprocess
 
