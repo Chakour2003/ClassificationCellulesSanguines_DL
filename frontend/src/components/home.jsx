@@ -105,6 +105,7 @@ export default function Home() {
   const meta = result ? getMeta(result.predicted_class) : null;
 
   return (
+    
     <div style={S.page}>
 
       {/* ── Header ── */}
